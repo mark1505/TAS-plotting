@@ -94,7 +94,8 @@ df = pd.DataFrame.from_dict(data_dict)
 df['Time'] = df['Time'].astype(float)
 for x in param_wavelengths:
     df[x] = df[x].astype(float)
-df.sort_values(by='Time', ascending=True)
+df.sort_values(by='Time', ascending=True, inplace=True)
+df.rolling(10)
 print(df)
 
 # Plot the data
