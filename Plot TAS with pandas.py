@@ -8,7 +8,9 @@ param_wavelengths = []
 with open("run param.txt", "r") as f:
     for x in f.readlines():
         param_wavelengths.append(x[0:3])
-    print("Wavelengths:", param_wavelengths)
+
+param_wavelengths = sorted(param_wavelengths)
+print("Wavelengths:", param_wavelengths)
 
 # Gets user input to ask which wavelength they want to plot (used further down)
 wavelength_to_plot = input("Type wavelength to plot and press enter: ")
@@ -95,7 +97,7 @@ df['Time'] = df['Time'].astype(float)
 for x in param_wavelengths:
     df[x] = df[x].astype(float)
 df.sort_values(by='Time', ascending=True, inplace=True)
-df.rolling(10)
+
 print(df)
 
 # Plot the data
