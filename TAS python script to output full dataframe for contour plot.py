@@ -100,19 +100,9 @@ df = df.set_index('Time').reset_index()
 print(df)
 df.to_csv("Dataframe.csv", index=False)
 
-'''
-# The rest can be ignored, it's easier to simply paste the csv file into OriginLab.
-# Plot the data as contour. Contour requires the data as regular lists.
-X = [int(i) for i in param_wavelengths]
-Y = df['Time'].tolist()
-Z = 
-print(X)
-print(Y)
-print(Z)
-
-plt.contour([X, Y,], Z)
-plt.yscale("log")
-plt.xlabel("Wavelength / nm")
-plt.ylabel("ΔO.D.")
+# Plot each wavelength as line plot for quick check
+df2 = df.copy()
+df2['Time'] = np.log(df2['Time'])
+df2 = df2.set_index('Time')
+df2.plot(subplots=True, layout=(4,5), figsize=(15, 8))
 plt.show()
-'''
