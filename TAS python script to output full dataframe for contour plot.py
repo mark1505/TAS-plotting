@@ -29,17 +29,17 @@ DAQ_files_new = []
 
 for x in scope_files:
     scope_files_new.append(x + "_new")
-    with open(x, "r") as input:
+    with open(x, "r") as input1:
         with open(x + "_new", "w") as output:
-            for line in input:
+            for line in input1:
                 if line[0] != "-":
                     output.write(line)
 
 for x in DAQ_files:
     DAQ_files_new.append(x + "_new")
-    with open(x, "r") as input:
+    with open(x, "r") as input1:
         with open(x + "_new", "w") as output:
-            for line in input:
+            for line in input1:
                 if line[0] != "-":
                     output.write(line)
 
@@ -51,13 +51,13 @@ l = 0
 
 for x in scope_files_new:
     joined_files.append(param_wavelengths[n] + "_joined")
-    with open(x, "r") as input:
+    with open(x, "r") as input1:
         with open(param_wavelengths[n] + "_joined", "w") as output:
-            for line in input:
-                output.write(line)
-    with open(DAQ_files_new[l], "r") as input1:
-        with open(param_wavelengths[n] + "_joined", "a") as output1:
             for line in input1:
+                output.write(line)
+    with open(DAQ_files_new[l], "r") as input2:
+        with open(param_wavelengths[n] + "_joined", "a") as output1:
+            for line in input2:
                 output1.write(line)
     n += 1
     l += 1
